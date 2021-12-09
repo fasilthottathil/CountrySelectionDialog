@@ -24,7 +24,7 @@ allprojects {
 
 ```gradle
 dependencies {
-   implementation 'com.github.fasilthottathil:CountrySelectionDialog:x.x.x'
+   implementation 'com.github.fasilthottathil:CountrySelectionDialog:1.0.5'
 }
 ```
 
