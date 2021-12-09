@@ -3,9 +3,9 @@
 
 # Example
 
-![Screenshot](../master/assets/picture.jpeg)
+![Screenshot](../master/assests/picture.jpeg)
 
-![Screen record](../master/assets/video.gif)
+![Screen record](../master/assests/video.gif)
 
 
 
