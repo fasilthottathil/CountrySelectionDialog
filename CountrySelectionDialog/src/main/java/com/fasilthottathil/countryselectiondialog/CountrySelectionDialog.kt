@@ -15,11 +15,28 @@ import com.fasilthottathil.countryselectiondialog.models.CountryItem
 import com.google.gson.Gson
 import java.lang.RuntimeException
 
-class CountrySelectionDialog(private val context: Context) {
+class CountrySelectionDialog {
 
-    private var alertDialog: AlertDialog? = null
+    companion object{
+        private var alertDialog: AlertDialog? = null
+        private val countrySelectionAdapter by lazy { CountrySelectionAdapter() }
 
-    private val countrySelectionAdapter by lazy { CountrySelectionAdapter() }
+        fun CountrySelectionDialog.show(): CountrySelectionDialog? {
+            return if (alertDialog == null) {
+                null
+            } else {
+                alertDialog?.show()
+                this
+            }
+        }
+
+        private var onCountrySelectedListener:((CountryItem)->Unit)? = null
+
+        fun CountrySelectionAdapter.setOnCountrySelected(listener:(CountryItem)->Unit){
+            onCountrySelectedListener = listener
+        }
+
+    }
 
     private fun getCountry(context: Context): ArrayList<CountryItem> {
         val jsonString: String = try {
@@ -36,17 +53,16 @@ class CountrySelectionDialog(private val context: Context) {
         return country
     }
 
-    fun create() {
+    fun create(context: Context):CountrySelectionDialog {
+
         alertDialog = AlertDialog.Builder(context)
             .create()
-
 
         val view = View.inflate(context, R.layout.country_dialog, null)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvCountry)
         val txtCancel = view.findViewById<TextView>(R.id.txtCancel)
         val edtSearch = view.findViewById<EditText>(R.id.edtSearch)
-
 
         recyclerView.apply {
             setHasFixedSize(true)
@@ -55,6 +71,10 @@ class CountrySelectionDialog(private val context: Context) {
         }
 
         countrySelectionAdapter.setData(getCountry(context))
+
+        countrySelectionAdapter.setOnCountrySelectedListener {
+            onCountrySelectedListener?.invoke(it)
+        }
 
         edtSearch.addTextChangedListener {
             countrySelectionAdapter.filter.filter(it)
@@ -71,20 +91,7 @@ class CountrySelectionDialog(private val context: Context) {
         txtCancel.setOnClickListener {
             alertDialog?.cancel()
         }
-    }
-
-    fun show(): CountrySelectionAdapter? {
-        return if (alertDialog == null) {
-            Toast.makeText(
-                context,
-                "Country selection Dialog not Created!",
-                Toast.LENGTH_SHORT
-            ).show()
-            null
-        } else {
-            alertDialog?.show()
-            countrySelectionAdapter
-        }
+        return this
     }
 
 
