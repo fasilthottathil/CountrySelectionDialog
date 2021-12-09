@@ -73,6 +73,7 @@ class CountrySelectionDialog {
         countrySelectionAdapter.setData(getCountry(context))
 
         countrySelectionAdapter.setOnCountrySelectedListener {
+            alertDialog?.cancel()
             onCountrySelectedListener?.invoke(it)
         }
 
