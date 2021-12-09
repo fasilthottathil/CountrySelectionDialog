@@ -32,7 +32,7 @@ class CountrySelectionDialog {
 
         private var onCountrySelectedListener:((CountryItem)->Unit)? = null
 
-        fun CountrySelectionAdapter.setOnCountrySelected(listener:(CountryItem)->Unit){
+        fun CountrySelectionDialog.setOnCountrySelected(listener:(CountryItem)->Unit){
             onCountrySelectedListener = listener
         }
 
