@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Country Selection Dialog</string>
+    <string name="country_name_and_code">Country name and code</string>
+    <string name="select_country">Select country</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+</resources>
