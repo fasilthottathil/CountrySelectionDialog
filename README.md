@@ -1,12 +1,12 @@
 # CountrySelectionDialog
 
 
-# Example
+# Screenshot
 
-![Screenshot](../master/assests/picture.jpeg)
+ <img src="https://raw.githubusercontent.com/fasilthottathil/CountrySelectionDialog/master/assests/picture.jpeg" width="400">  
 
-![Screen record](../master/assests/video.gif)
-
+<!-- ![Screen record](../master/assests/video.gif)
+ -->
 
 
 
