@@ -28,3 +28,12 @@ dependencies {
 }
 ```
 
+```kotlin
+ CountrySelectionDialog().create(this)
+     .show()?.setOnCountrySelected {
+         Log.d(COUNTRY_NAME, it.name)
+         Log.d(COUNTRY_CODE, it.code)
+         Log.d(COUNTRY_DIAL_CODE, it.dial_code)
+     }
+```
+
