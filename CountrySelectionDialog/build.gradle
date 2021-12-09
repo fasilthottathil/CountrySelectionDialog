@@ -56,7 +56,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.fasilthottathil'
-                artifactId = 'Country-Selection-Dialog'
+                artifactId = 'CountrySelectionDialog'
                 version = '1.0'
             }
         }

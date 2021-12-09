@@ -15,7 +15,7 @@ class CountrySelectionAdapter : RecyclerView.Adapter<CountrySelectionAdapter.Vie
 
     private var country: ArrayList<CountryItem> = arrayListOf()
     private var countryFiltered: ArrayList<CountryItem> = arrayListOf()
-    private var onCountrySelectedListener: ((String) -> Unit)? = null
+    private var onCountrySelectedListener: ((CountryItem) -> Unit)? = null
 
     class ViewHolder(val binding: CountryItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -40,7 +40,7 @@ class CountrySelectionAdapter : RecyclerView.Adapter<CountrySelectionAdapter.Vie
             )
             layout.setOnClickListener {
                 onCountrySelectedListener?.let {
-                    it(countryFiltered[position].dial_code)
+                    it(countryFiltered[position])
                 }
             }
         }
@@ -61,7 +61,7 @@ class CountrySelectionAdapter : RecyclerView.Adapter<CountrySelectionAdapter.Vie
         notifyDataSetChanged()
     }
 
-    fun setOnCountrySelectedListener(listener: (String) -> Unit) {
+    fun setOnCountrySelectedListener(listener: (CountryItem) -> Unit) {
         onCountrySelectedListener = listener
     }
 
